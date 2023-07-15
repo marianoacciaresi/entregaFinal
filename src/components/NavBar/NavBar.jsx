@@ -1,6 +1,9 @@
 import React from "react";
+import { useContext } from "react";
 import '../assets/styles.css';
 import CartWidget from "../CartWidget/CartWidget";
+import { CartContext } from "../../context/cart-context";
+import { useNavigate, Link } from "react-router-dom";
 
 
 const NavBar = ({ logo }) => {
@@ -12,12 +15,13 @@ const NavBar = ({ logo }) => {
 
                 <div className="container-fluid navBar50">
                     
-                    <div > 
-                    <a className="navbar-brand noFlex" href="">                        
-                        <img src="logo_nav_bty.webp" alt={logo} width="110" height="40" id="navLogo" className="d-inline-block"/>  
-                    </a>
-                    <a className="navbar-brand noFlex" href=""> TT23 - Tu paleta a medida</a>
-                    
+                    <div> 
+                    <Link to='/entregaFinal/'> 
+                        <a className="navbar-brand noFlex" href="">        
+                            <img src="logo_nav_bty.webp" alt={logo} width="110" height="40" id="navLogo" className="d-inline-block"/>                              
+                        </a>
+                        <a className="navbar-brand noFlex" href=""> TT23 - Tu paleta a medida</a>
+                    </Link>
                     </div>
 
                 </div>
@@ -33,8 +37,7 @@ const NavBar = ({ logo }) => {
                     <nav className="nav">
                         <ul className="menu">
                             <li><a href="#">Quiénes Somos</a></li>
-                            <li><a href="#">Productos</a></li>
-                            {/* <li><a href="">Categorías</a></li> */}
+                            <li><a href="#">Productos</a></li>                            
                             <li><a href="#">Contactos</a></li>
                         </ul>
                     </nav> 

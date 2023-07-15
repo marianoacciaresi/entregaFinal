@@ -20,8 +20,10 @@ export const CartProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
 
-    const onAddToCart = (id) => {
+    const onAddToCart = (id) => {       
+
         const item = products.find((product) => product.id === id);
+
         if(cart?.find((product) => product.id === id)?.quantity === Number(item.stock)) return;
         if(cart?.length === 0){
             setCart([{...item, quantity: 1}])
