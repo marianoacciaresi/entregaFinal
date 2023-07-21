@@ -16,12 +16,12 @@ const NavBar = ({ logo }) => {
                 <div className="container-fluid navBar50">
                     
                     <div> 
-                    <Link to='/entregaFinal/'> 
-                        <a className="navbar-brand noFlex" href="">        
-                            <img src="logo_nav_bty.webp" alt={logo} width="110" height="40" id="navLogo" className="d-inline-block"/>                              
-                        </a>
-                        <a className="navbar-brand noFlex" href=""> TT23 - Tu paleta a medida</a>
-                    </Link>
+
+                        <Link to='/entregaFinal/' className="navbar-brand noFlex" href=""> 
+                            <img src="logo_nav_bty.webp" alt={logo} width="110" height="40" id="navLogo" className="d-inline-block"/>
+                        </Link>
+                        <Link to='/entregaFinal/' className="navbar-brand noFlex" href=""> TT23 - Tu paleta a medida </Link>                        
+                    
                     </div>
 
                 </div>

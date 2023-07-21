@@ -5,6 +5,7 @@ import Home from './pages/home';
 import ProductDetail from './pages/product-detail';
 import { CartProvider } from './context/cart-context'
 import Cart from './pages/cart'
+import Checkout from './pages/checkout'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/entregaFinal/' element={<Home />} />
           <Route path='/entregaFinal/products/:productId' element={<ProductDetail />} />
           <Route path='/entregaFinal/cart' element={<Cart />} />
+          <Route path='/entregaFinal/checkout' element={<Checkout />} />
         </Routes>
       </CartProvider>
     </div>

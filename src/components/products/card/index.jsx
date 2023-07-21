@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import { memo } from 'react';
 import './styles.css'
 
-const Card = ({ id, image, name, category, description, price, stock, onAddToCart, onShowDetails }) => {
+const Card = memo(({ id, image, name, category, description, price, stock, onAddToCart, onShowDetails }) => {
     return (
         <div className='card'>
             <button className='cartButttonContainer' type='button' onClick={() => onShowDetails(id)}>
@@ -19,6 +20,6 @@ const Card = ({ id, image, name, category, description, price, stock, onAddToCar
             </div>
         </div>        
     )
-}
+});
 
 export default Card;
