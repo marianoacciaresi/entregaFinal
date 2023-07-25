@@ -1,8 +1,12 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import Input from '../../components/input'
 import './styles.css'
 import { useForm } from '../../hooks/useForm'
 import { CartContext } from '../../context/cart-context'
+import { firebaseServices } from '../../services/firebase'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useQuery } from '../../hooks/useQuery'
+
 
 const initialState = {
     name : { value: '', error: '', hasError: true, active: false, name: 'name' },
@@ -16,8 +20,32 @@ const initialState = {
 }
 
 function Checkout() {
-    const [formState, inputHandler, clearInputs, inputFocus, inputBlur] = useForm(initialState)
     const {cart, total} = useContext(CartContext);
+    const [formState, inputHandler, inputFocus, inputBlur, clearInputs] = useForm(initialState)
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    let query = useQuery();
+    
+    useEffect(() => {
+        const cartId = query.get("cartId") 
+        
+        if(query.get("cartId")) {
+            const getCart = async () => {
+                const cart = await firebaseServices.getCartById(cartId)
+                return cart
+            }
+            getCart()
+                .then((cart) => {
+                    setCart(cart.items)
+                })
+                .catch((error) => {
+                    console.log({error})
+                })
+        }
+
+    }, [query])
+
+
     const onChange = (event) => {
         const { name, value } = event.target
         inputHandler({ name, value })
@@ -63,11 +91,21 @@ function Checkout() {
             },
             total: total
         }
+
+        const orderId = await firebaseServices.createOrder(newOrder)
+        await firebaseServices.updateCart(state.cartId)
+
+        return {
+            orderId,
+        }
+        
     }
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault()
-        console.log('formState', formState)
+        const { orderId } = await onHandlerOrder();
+        clearInputs({ formState })
+        navigate('/entregaFinal/success-order', { state: { orderId: orderId.id } })
     }
 
     return (
@@ -83,8 +121,8 @@ function Checkout() {
                             required={true}
                             label='Nombre'
                             onChange={onChange}
-                            onFocus={() => onFocus({ name: 'name'})}
-                            onBlur={() => onBlur({ name: 'name'})}
+                            onFocus={(e) => onFocus({ e, name: 'name'})}
+                            onBlur={(e) => onBlur({ e, name: 'name'})}
                             active={formState.name.active}
                             error={formState.name.error}
                             hasError={formState.name.hasError}
