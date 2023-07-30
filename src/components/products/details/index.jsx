@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 import './styles.css'
 
-const Details = ({ id, image, name, category, description, price, stock}) => {
-
-    const onAddToCart = (id) => {
-        console.log('Add to cart', id);
-    }
+const Details = ({ id, image, name, category, description, price, stock, onAddToCart}) => {
 
     return (
         <div className='cardDetail'>
