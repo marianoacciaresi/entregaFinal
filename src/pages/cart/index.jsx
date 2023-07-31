@@ -42,7 +42,7 @@ function Cart() {
                 
                 {
                     cart?.length > 0 && cart.map((product) => (
-                        <CartItem key={product.id} {...product} onAddToCart={onAddToCart} onDecreaseItem={onDecreaseItem} onRemoveItem={onRemoveItem} />
+                        <CartItem key={product.id} {...product} onAddToCart={onAddToCart} onDecreaseItem={onDecreaseItem} onRemoveItem={onRemoveItem} buttonEliminar={true} />
                     ))
                 }
 

@@ -1,6 +1,6 @@
 import './styles.css'
 
-const CartItem = ({onAddToCart,onDecreaseItem, onRemoveItem, id, image, name, price, quantity, stock }) => {
+const CartItem = ({onAddToCart,onDecreaseItem, onRemoveItem, buttonEliminar, id, image, name, price, quantity, stock }) => {
     return(
         <div key={id} className='cartItem'>
             <div className='cardImageContainerCart'>
@@ -16,7 +16,9 @@ const CartItem = ({onAddToCart,onDecreaseItem, onRemoveItem, id, image, name, pr
                         <button onClick={() => onAddToCart(id)} className='cartButttonAdd'>+</button>
                         <button onClick={() => onDecreaseItem(id)} className='cartButttonDecrease'>-</button>
                     </div>
-                    <button onClick={() => onRemoveItem(id)} className='cartButttonRemove'>Eliminar</button>
+                    { buttonEliminar === true ? ( <button onClick={() => onRemoveItem(id)} className='cartButttonRemove'>Eliminar</button>) : null}
+                    
+                    {/* <button onClick={() => onRemoveItem(id)} className='cartButttonRemove'>Eliminar</button> */}
                 </div>
             </div>
         </div>

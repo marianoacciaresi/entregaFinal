@@ -219,7 +219,7 @@ function Checkout() {
                             </div>
                             <div className="checkoutFormInputGroup">
                                 <Input 
-                                    placeholder='Avenida San Juan, 1233, CABA'
+                                    placeholder='Avenida San Juan 3600 CABA'
                                     id='address'
                                     name='address'
                                     required={true}
@@ -249,7 +249,7 @@ function Checkout() {
                                     maxLength={10}
                                 />
                             </div>
-                        </div>
+                        </div>                                                                        
                         <button disabled={!formState.isFormValid} type='submit' className='butttonCheckout'>Confirmar Compra</button>
                     </form>
                 </div>
@@ -258,7 +258,7 @@ function Checkout() {
                     <h2 className='checkoutTitle'>Detalle de compra</h2>
                     {
                         cart.map((product) => (
-                            <CartItem key={product.id}{...product} onAddToCart={onAddToCart} onDecreaseItem={onDecreaseItem} onRemoveItem={onRemoveItem} />
+                            <CartItem key={product.id}{...product} onAddToCart={onAddToCart} onDecreaseItem={onDecreaseItem} onRemoveItem={onRemoveItem} buttonEliminar={false} />
                         ))
                     }
                     <Total  total={total} totalItemQuantity={getTotalItemQuantity()} />
