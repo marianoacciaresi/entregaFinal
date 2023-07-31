@@ -23,7 +23,7 @@ const initialState = {
 }
 
 function Checkout() {
-    const {cart, total, setCart, onAddToCart, onDecreaseItem, onRemoveItem, getTotalItemQuantity} = useContext(CartContext);
+    const {cart, total, setCart, onAddToCart, onDecreaseItem, onRemoveItem, getTotalItemQuantity, vaciarCarrito} = useContext(CartContext);
     const [formState, inputHandler, inputFocus, inputBlur, clearInputs] = useForm(initialState)
     const { state } = useLocation();
     const navigate = useNavigate();
@@ -108,6 +108,7 @@ function Checkout() {
         event.preventDefault()
         const { orderId } = await onHandlerOrder();
         clearInputs({ formState })
+        vaciarCarrito();
         navigate('/entregaFinal/success-order', { state: { orderId: orderId.id } })
     }
 

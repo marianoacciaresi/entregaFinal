@@ -1,0 +1,18 @@
+.margin-config{
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.margin-config-top{
+    margin-top: 1rem;
+}
+
+.height-config{
+    height: 50vh;
+}
+
+@media (max-width: 1300px){
+    .padding-config{
+        padding-top: 10vh;
+    }
+}
