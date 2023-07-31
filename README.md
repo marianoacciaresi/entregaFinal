@@ -2,17 +2,17 @@
 Poder realizar una compra de una paleta de Tenis de Mesa, completamente a medida.
 
 ## Funcionalidades disponibles
-Listado de productos desde MockApi.
-Guardado de órdenes y compras en Firebase.
-Posibilidad de filtrar por productos.
-Posibilidad de ver el detalle del producto y agregar al carrito.
-Visualización de carrito con manejo de cantidades y stock.
-Formulario de compra con validación adicional de email.
-Posibilidad de ver el carrito de compra al momento de completar el formulario.
+Listado de productos desde MockApi.\
+Guardado de órdenes y compras en Firebase.\
+Posibilidad de filtrar por productos.\
+Posibilidad de ver el detalle del producto y agregar al carrito.\
+Visualización de carrito con manejo de cantidades y stock.\
+Formulario de compra con validación adicional de email.\
+Posibilidad de ver el carrito de compra al momento de completar el formulario.\
 
 ## Otros comentarios
-La página se encuentra modularizada en distintos componentes permitiendo su abstracción y reutilización.
-Se utilizó SweetAlert para mostrar notificaciones al agregar al carrito.
+La página se encuentra modularizada en distintos componentes permitiendo su abstracción y reutilización.\
+Se utilizó SweetAlert para mostrar notificaciones al agregar al carrito.\
 Al finalizar la compra el carrito es vaciado para poder realizar una nueva compra.
 
 # Getting Started with Vite
