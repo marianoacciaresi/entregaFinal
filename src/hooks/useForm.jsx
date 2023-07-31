@@ -52,7 +52,8 @@ export const useForm = (initialState) => {
     const [formState, dispatchFormState] = useReducer(formReducer, initialState)
 
     const inputHandler = ({ name, value, dispatch = dispatchFormState }) => {
-        const { error, hasError} = validateInput({ type: name, value});
+        const mail = formState.email.value;
+        const { error, hasError} = validateInput({ type: name, value, mail});
         let isFormValid = true;
 
         for(const key in formState){

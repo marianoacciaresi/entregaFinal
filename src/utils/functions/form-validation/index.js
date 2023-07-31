@@ -6,7 +6,7 @@ const phoneRegex = /^[0-9]{7,15}$/;
 const addressRegex = /^[a-zA-ZÀ-ÿ0-9\s]{8,80}$/;
 const postalCodeRegex = /^[0-9]{3,10}$/;
 
-export const validateInput = ({ type, value }) => {
+export const validateInput = ({ type, value, mail }) => {
     let hasError = false;
     let error = '';
     const formatValue = value.trim();
@@ -15,10 +15,10 @@ export const validateInput = ({ type, value }) => {
         case 'name':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Name is required';
+                error = 'El nombre es requerido';
             } else if(!nameRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Name is invalid';
+                error = 'Nombre inválido';
             } else {
                 hasError = false;
                 error = '';
@@ -27,10 +27,10 @@ export const validateInput = ({ type, value }) => {
         case 'surname':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Surname is required';
+                error = 'El apellido es requerido';
             } else if(!surnameRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Surname is invalid';
+                error = 'Apellido inválido';
             } else {
                 hasError = false;
                 error = '';
@@ -39,10 +39,10 @@ export const validateInput = ({ type, value }) => {
         case 'document':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Document is required';
+                error = 'El Documento es requerido';
             } else if(!documentRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Document is invalid';
+                error = 'Documento inválido';
             } else {
                 hasError = false;
                 error = '';
@@ -51,22 +51,39 @@ export const validateInput = ({ type, value }) => {
         case 'email':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Email is required';
+                error = 'El eMail es requerido';
             } else if(!emailRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Email is invalid';
+                error = 'eMail inválido';
             } else {
                 hasError = false;
                 error = '';
             }
             break;
+
+        case 'email_repeat':            
+            if(formatValue === "") {
+                hasError = true;
+                error = 'Repetir el eMail es requerido';
+            } else if(!emailRegex.test(formatValue)) {
+                hasError = true;
+                error = 'eMail inválido';
+            } else if( value != mail) {
+                hasError = true;
+                error = 'Los eMails deben ser iguales';
+            } else {
+                hasError = false;
+                error = '';
+            }
+            break;            
+
         case 'phone':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Phone is required';
+                error = 'Teléfono requerido';
             } else if(!phoneRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Phone is invalid';
+                error = 'Teléfono inválido';
             } else {
                 hasError = false;
                 error = '';
@@ -75,10 +92,10 @@ export const validateInput = ({ type, value }) => {
         case 'address':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Address is required';
+                error = 'La dirección es requerida';
             } else if(!addressRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Address is invalid';
+                error = 'Dirección inválida';
             } else {
                 hasError = false;
                 error = '';
@@ -87,10 +104,10 @@ export const validateInput = ({ type, value }) => {
         case 'postalCode':
             if(formatValue === "") {
                 hasError = true;
-                error = 'Postal Code is required';
+                error = 'El código postal es requerido';
             } else if(!postalCodeRegex.test(formatValue)) {
                 hasError = true;
-                error = 'Postal Code is invalid';
+                error = 'Código postal inválido';
             } else {
                 hasError = false;
                 error = '';

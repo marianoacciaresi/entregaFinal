@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
+import Swal from "sweetalert2";
 
 const initialState = {
     products: [],
@@ -27,9 +28,23 @@ export const CartProvider = ({ children }) => {
         if(cart?.find((product) => product.id === id)?.quantity === Number(item.stock)) return;
         if(cart?.length === 0){
             setCart([{...item, quantity: 1}])
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Se ha agregado al carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
         if(cart?.length > 0 && !cart?.find((product) => product.id === id)){
             setCart([...cart, {...item, quantity: 1}])
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Se ha agregado al carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
         if(cart?.length > 0 && cart?.find((product) => product.id === id)) {
             setCart((currentCart) => {
@@ -74,6 +89,12 @@ export const CartProvider = ({ children }) => {
     const getTotalItemQuantity = () => {
         return cart.reduce((acc, product) => acc + product.quantity, 0)
     }
+
+    const vaciarCarrito = () => {
+        setCart([])
+    }
+
+
     return (
         <CartContext.Provider 
             value={{ 
@@ -88,7 +109,8 @@ export const CartProvider = ({ children }) => {
                 setCategories,
                 setProducts,
                 getItemQuantity,
-                getTotalItemQuantity
+                getTotalItemQuantity,
+                vaciarCarrito
             }}
         >
             {children}

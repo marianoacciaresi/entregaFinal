@@ -15,6 +15,7 @@ const initialState = {
     surname : { value: '', error: '', hasError: true, active: false, name: 'surname' },
     document : { value: '', error: '', hasError: true, active: false, name: 'document' },
     email : { value: '', error: '', hasError: true, active: false, name: 'email' },
+    email_repeat : { value: '', error: '', hasError: true, active: false, name: 'email_repeat' },
     phone : { value: '', error: '', hasError: true, active: false, name: 'phone' },
     address : { value: '', error: '', hasError: true, active: false, name: 'address' },
     postalCode : { value: '', error: '', hasError: true, active: false, name: 'postalCode' },
@@ -50,7 +51,7 @@ function Checkout() {
 
     const onChange = (event) => {
         const { name, value } = event.target
-        inputHandler({ name, value })
+        inputHandler({ name, value})
     }
 
     const onFocus = ({ name }) => {
@@ -82,9 +83,9 @@ function Checkout() {
             },
             seller: {
                 id: 1,
-                name: 'Pedrito',
-                phone: '123456789',
-                email: 'pedrito@taskmanager.com'
+                name: 'Mariano',
+                phone: '4972575',
+                email: 'tt23@gmail.com'
             },
             shipping: {
                 deliverDate: new Date() + 7,
@@ -181,9 +182,27 @@ function Checkout() {
                                     maxLength={40}
                                 />
                             </div>
+
                             <div className="checkoutFormInputGroup">
                                 <Input 
-                                    placeholder='+5492214972575'
+                                    placeholder='repetir email'
+                                    id='email_repeat'
+                                    name='email_repeat'
+                                    required={true}
+                                    label='Repetir email'
+                                    onChange={onChange}
+                                    onFocus={() => onFocus({ name: 'email_repeat' })}
+                                    onBlur={() => onBlur({ name: 'email_repeat'})}
+                                    active={formState.email_repeat.active}
+                                    error={formState.email_repeat.error}
+                                    hasError={formState.email_repeat.hasError}
+                                    maxLength={40}
+                                />
+                            </div>
+
+                            <div className="checkoutFormInputGroup">
+                                <Input 
+                                    placeholder='5492214972575'
                                     id='phone'
                                     name='phone'
                                     required={true}

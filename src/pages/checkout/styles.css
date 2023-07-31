@@ -47,17 +47,6 @@
     cursor: not-allowed;
 }
 
-@media (max-width: 1300px){
-    .checkoutContainer{
-        padding-top: 10vh;
-    }
-
-    /* .checkoutForm {
-        max-width: 70vw;
-    }     */
-
-}
-
 .checkoutCartContainer {
     display: flex;
     flex-direction: column;
@@ -71,3 +60,27 @@
     flex: 1;
     gap: 2rem;
 }
+
+@media (max-width: 1300px){
+    .checkoutContainer{
+        padding-top: 10vh;
+    }
+
+    .checkoutDetailContainer{
+        flex-direction: column;
+    }
+
+    .checkoutFormContainer{
+        width: 100%;
+    }
+
+    .checkoutCartContainer{
+        width: 100%;
+    }
+    .butttonCheckout {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
